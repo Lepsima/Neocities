@@ -10,58 +10,63 @@
 
 <body>
     <h1>Helo</h1>
-    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit dolores illum perspiciatis! Rem est tempora vel
-        ea, voluptates sequi non nesciunt quas quidem vitae necessitatibus fugit, pariatur, temporibus ipsa ipsam?</p>
+    <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit dolores illum perspiciatis! Rem est tempora vel
+        ea, voluptates sequi non nesciunt quas quidem vitae necessitatibus fugit, pariatur, temporibus ipsa ipsam?
+    </p>
 
-    <div id="ac-1" class="ac-begin ac-panel">
-        <p>Panel 1</p>
-        <p>Helo</p>
-        <button onClick="SwitchPanel('ac-2-1')">Option 1</button>
-        <button onClick="SwitchPanel('ac-2-2')">Option 2</button>
-    </div>
-
-
-    <div id="ac-2-1" class="ac-panel">
-        <p>Panel 2-1</p>
-        <p>Second layer</p>
-        <button onClick="SwitchPanel('ac-2-1-1')">Option 1</button>
-        <button onClick="SwitchPanel('ac-2-1-2')">Option 2</button>
-        <button onClick="SwitchPanel('ac-1')">Back</button>
-    </div>
+    <div class="ac-panel-holder">
+        <div id="ac-1" class="ac-begin ac-panel">
+            <p>Main panel</p>
+            <p>Helo</p>
+            <button ac_goto="1">Option 1</button>
+            <button ac_goto="2">Option 2</button>
+        </div>
 
 
-    <div id="ac-2-2" class="ac-panel">
-        <p>Panel 2-2</p>
-        <p>Sill second layer</p>
-        <button onClick="SwitchPanel('ac-2-2-1')">Option 1</button>
-        <button onClick="SwitchPanel('ac-2-2-2')">Option 2</button>
-        <button onClick="SwitchPanel('ac-1')">Back</button>
-    </div>
+        <div id="ac-1-1" class="ac-panel">
+            <p>Panel 1</p>
+            <p>Second layer</p>
+            <button ac_goto="1">Option 1</button>
+            <button ac_goto="2">Option 2</button>
+            <button ac_goto="back">Back</button>
+        </div>
 
 
-    <div id="ac-2-1-1" class="ac-panel">
-        <p>Panel 2-1-1</p>
-        <p>:3</p>
-        <button onClick="SwitchPanel('ac-2-1')">Back</button>
-    </div>
-
-    <div id="ac-2-1-2" class="ac-panel">
-        <p>Panel 2-1-2</p>
-        <p>Helo</p>
-        <button onClick="SwitchPanel('ac-2-1')">Back</button>
-    </div>
+        <div id="ac-1-2" class="ac-panel">
+            <p>Panel 2</p>
+            <p>Sill second layer</p>
+            <button ac_goto="1">Option 1</button>
+            <button ac_goto="2">Option 2</button>
+            <button ac_goto="back">Back</button>
+        </div>
 
 
-    <div id="ac-2-2-1" class="ac-panel">
-        <p>Panel 2-2-1</p>
-        <p>Nothing here</p>
-        <button onClick="SwitchPanel('ac-2-2')">Back</button>
-    </div>
+        <div id="ac-1-1-1" class="ac-panel">
+            <p>Panel 1-1</p>
+            <p>:3</p>
+            <button ac_goto="back">Back</button>
+        </div>
 
-    <div id="ac-2-2-2" class="ac-panel">
-        <p>Panel 2-2-2</p>
-        <p>Yipee</p>
-        <button onClick="SwitchPanel('ac-2-2')">Back</button>
+        <div id="ac-1-1-2" class="ac-panel">
+            <p>Panel 1-2</p>
+            <p>Helo</p>
+            <button ac_goto="back">Back</button>
+        </div>
+
+
+        <div id="ac-1-2-1" class="ac-panel">
+            <p>Panel 2-1</p>
+            <p>Nothing here</p>
+            <button ac_goto="back">Back</button>
+        </div>
+
+        <div id="ac-1-2-2" class="ac-panel">
+            <p>Panel 2-2</p>
+            <p>Yipee</p>
+            <button ac_goto="back">Back</button>
+        </div>
+
     </div>
 
     <script src="ac_panel_script.js"></script>

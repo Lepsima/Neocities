@@ -8,7 +8,7 @@ html {
 .ac-panel {
     position: absolute;
     display: inline;
-    transition: transform 0.3s ease;
+    transition: transform 0.5s ease;
 }
 
 .ac-inactive {
@@ -21,9 +21,9 @@ html {
 }
 
 .ac-move-left {
-    transform: translateX(-300px);
+    transform: translateX(-100vw);
 }
 
 .ac-move-right {
-    transform: translateX(300px);
+    transform: translateX(100vw);
 }
