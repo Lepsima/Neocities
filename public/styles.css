@@ -8,7 +8,8 @@ html {
 .ac-panel {
     position: absolute;
     display: inline;
-    transition: transform 0.5s ease;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    opacity: 1;
 }
 
 .ac-inactive {
@@ -21,9 +22,21 @@ html {
 }
 
 .ac-move-left {
-    transform: translateX(-100vw);
+    transform: translateX(-300px);
+    opacity: 0;
 }
 
 .ac-move-right {
-    transform: translateX(100vw);
+    transform: translateX(300px);
+    opacity: 0.5;
+}
+
+.ac-move-far-right {
+    transform: translateX(500px);
+    opacity: 0.25;
+}
+
+.ac-move-very-far-right {
+    transform: translateX(600px);
+    opacity: 0;
 }

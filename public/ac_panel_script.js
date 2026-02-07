@@ -5,7 +5,7 @@ function InitPanels() {
     panels.forEach(panel => {
         // Deactivate panel
         SetPanelActive(panel, false);
-        AnimatePanelTowards(panel, false);
+        AnimatePanelTowards(panel, false, false);
 
         // Set button actions
         let buttons = panel.querySelectorAll(":scope > button");
@@ -42,7 +42,7 @@ function SetPanelActive(panel, active) {
     }
 }
 
-function AnimatePanelTowards(panel, right) {
+function AnimatePanelTowards(panel, right, animateParent) {
     if (right) {
         panel.classList.remove('ac-move-left');
         panel.classList.add('ac-move-right');
@@ -50,6 +50,36 @@ function AnimatePanelTowards(panel, right) {
         panel.classList.remove('ac-move-right');
         panel.classList.add('ac-move-left');
     }
+
+    if (!animateParent) return;
+
+    let parent = GetPanelParent(panel);
+    if (parent == null) return;
+
+    if (right) {
+        parent.classList.add('ac-move-far-right');
+
+        let superParent = GetPanelParent(parent);
+        if (superParent == null) return;
+        superParent.classList.add('ac-move-very-far-right');
+
+    } else {
+        parent.classList.remove('ac-move-far-right');
+
+        let superParent = GetPanelParent(parent);
+        if (superParent == null) return;
+        superParent.classList.remove('ac-move-far-right');
+
+        let superSuperParent = GetPanelParent(superParent);
+        if (superSuperParent == null) return;
+        superSuperParent.classList.remove('ac-move-very-far-right');
+    }
+}
+
+function GetPanelParent(panel) {
+    let idx = panel.id.lastIndexOf('-');
+    let id = panel.id.slice(0, idx);
+    return document.getElementById(id);
 }
 
 function CountChars(str, char) {
@@ -78,5 +108,5 @@ function SwitchPanel(newPanel) {
     SetPanelActive(active, true);
 
     let isNewDeeper = IsDeeperThan(active, inactive);
-    AnimatePanelTowards(inactive, isNewDeeper);
+    AnimatePanelTowards(inactive, isNewDeeper, true);
 }
