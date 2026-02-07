@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Doto:wght@900&display=swap');
+
+html {
+  font-family: "Doto", sans-serif;
+  font-optical-sizing: auto;
+}
+
+.ac-panel {
+    position: absolute;
+    display: inline;
+    transition: transform 0.3s ease;
+}
+
+.ac-inactive {
+    pointer-events: none;
+}
+
+.ac-active {
+    transform: translateX(0);   
+    pointer-events: auto;
+}
+
+.ac-move-left {
+    transform: translateX(-300px);
+}
+
+.ac-move-right {
+    transform: translateX(300px);
+}

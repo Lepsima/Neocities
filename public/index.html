@@ -1,1 +1,70 @@
-<p> test3 </p>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <h1>Helo</h1>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugit dolores illum perspiciatis! Rem est tempora vel
+        ea, voluptates sequi non nesciunt quas quidem vitae necessitatibus fugit, pariatur, temporibus ipsa ipsam?</p>
+
+    <div id="ac-1" class="ac-begin ac-panel">
+        <p>Panel 1</p>
+        <p>Helo</p>
+        <button onClick="SwitchPanel('ac-2-1')">Option 1</button>
+        <button onClick="SwitchPanel('ac-2-2')">Option 2</button>
+    </div>
+
+
+    <div id="ac-2-1" class="ac-panel">
+        <p>Panel 2-1</p>
+        <p>Second layer</p>
+        <button onClick="SwitchPanel('ac-2-1-1')">Option 1</button>
+        <button onClick="SwitchPanel('ac-2-1-2')">Option 2</button>
+        <button onClick="SwitchPanel('ac-1')">Back</button>
+    </div>
+
+
+    <div id="ac-2-2" class="ac-panel">
+        <p>Panel 2-2</p>
+        <p>Sill second layer</p>
+        <button onClick="SwitchPanel('ac-2-2-1')">Option 1</button>
+        <button onClick="SwitchPanel('ac-2-2-2')">Option 2</button>
+        <button onClick="SwitchPanel('ac-1')">Back</button>
+    </div>
+
+
+    <div id="ac-2-1-1" class="ac-panel">
+        <p>Panel 2-1-1</p>
+        <p>:3</p>
+        <button onClick="SwitchPanel('ac-2-1')">Back</button>
+    </div>
+
+    <div id="ac-2-1-2" class="ac-panel">
+        <p>Panel 2-1-2</p>
+        <p>Helo</p>
+        <button onClick="SwitchPanel('ac-2-1')">Back</button>
+    </div>
+
+
+    <div id="ac-2-2-1" class="ac-panel">
+        <p>Panel 2-2-1</p>
+        <p>Nothing here</p>
+        <button onClick="SwitchPanel('ac-2-2')">Back</button>
+    </div>
+
+    <div id="ac-2-2-2" class="ac-panel">
+        <p>Panel 2-2-2</p>
+        <p>Yipee</p>
+        <button onClick="SwitchPanel('ac-2-2')">Back</button>
+    </div>
+
+    <script src="ac_panel_script.js"></script>
+</body>
+
+</html>
