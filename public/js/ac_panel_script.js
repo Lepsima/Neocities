@@ -3,39 +3,14 @@ const lines = [];
 
 InitPanels();
 Animate();
-ImportMemes();
-
-async function ImportMemes() {
-    const memeImporter = await import("./meme_importer.js");
-    const memes = memeImporter.GetMemeData();
-    console.log(memes);
-
-    memes.files.forEach(meme => {
-        DisplayMeme(meme);
-
-    })
-}
-function DisplayMeme(url) {
-    let src = 'https://lepsima.github.io/Neocities/assets/' + url;
-    let img = document.createElement('img');
-
-    img.src = src;
-    document.body.appendChild(img);
-}
 
 function InitPanels() {
-    let panels = document.querySelectorAll('.ac-panel');
+    let panels = document.querySelectorAll('.ac-sub-panel');
+
     panels.forEach(panel => {
         // Deactivate panel
         SetPanelActive(panel, false);
         AnimatePanelTowards(panel, false, false);
-
-        let idx = panel.id.lastIndexOf('-');
-        let panelIndex = panel.id.slice(idx + 1);
-        let ypos = (panelIndex - 1) * 100;
-
-        let header = panel.querySelector('.ac_panel_header');
-        header.style.marginTop = header.offsetTop + ypos + 'px';
 
         // Set button actions
         let buttons = panel.querySelectorAll(":scope > button");
@@ -44,6 +19,7 @@ function InitPanels() {
             let panelID = `${panel.id}-${subpanel}`;
 
             if (subpanel == "back") {
+                let idx = panel.id.lastIndexOf('-');
                 panelID = panel.id.slice(0, idx);
 
             } else {
@@ -60,21 +36,33 @@ function InitPanels() {
     SetPanelActive(active, true);
 }
 
-function SetPanelActive(panel, active) {
+function SetPanelActive(subpanel, active) {
+    let panel = subpanel.parentElement;
+
     if (active) {
-        // Activate panel, no animations
-        panel.classList.remove('ac-inactive');
+        // remove anims
         panel.classList.remove('ac-move-right');
         panel.classList.remove('ac-move-left');
+
+        // Activate panel
+        panel.classList.remove('ac-inactive');
+        subpanel.classList.remove('ac-sub-inactive');
+
         panel.classList.add('ac-active');
+        subpanel.classList.add('ac-sub-active');
     } else {
         // Deactivate panel
         panel.classList.remove('ac-active');
+        subpanel.classList.remove('ac-sub-active');
+
         panel.classList.add('ac-inactive');
+        subpanel.classList.add('ac-sub-inactive');
     }
 }
 
-function AnimatePanelTowards(panel, right, animateParent) {
+function AnimatePanelTowards(subpanel, right, animateParent) {
+    let panel = subpanel.parentElement;
+
     if (right) {
         panel.classList.remove('ac-move-left');
         panel.classList.add('ac-move-right');
@@ -85,26 +73,23 @@ function AnimatePanelTowards(panel, right, animateParent) {
 
     if (!animateParent) return;
 
-    let parent = GetPanelParent(panel);
-    if (parent == null) return;
+    let parentSubpanel = GetPanelParent(subpanel);
+    if (parentSubpanel == null) return;
+    let parentPanel = parentSubpanel.parentElement;
+
+    let superSubpanel = GetPanelParent(parentSubpanel);
+    let superPanel = superSubpanel == undefined ? undefined : superSubpanel.parentElement;
 
     if (right) {
-        parent.classList.add('ac-move-far-right');
-
-        let superParent = GetPanelParent(parent);
-        if (superParent == null) return;
-        superParent.classList.add('ac-move-very-far-right');
+        parentPanel?.classList.add('ac-move-far-right');
+        superPanel?.classList.add('ac-move-very-far-right');
 
     } else {
-        parent.classList.remove('ac-move-far-right');
+        parentPanel?.classList.remove('ac-move-far-right');
+        superPanel?.classList.remove('ac-move-far-right');
 
-        let superParent = GetPanelParent(parent);
-        if (superParent == null) return;
-        superParent.classList.remove('ac-move-far-right');
-
-        let superSuperParent = GetPanelParent(superParent);
-        if (superSuperParent == null) return;
-        superSuperParent.classList.remove('ac-move-very-far-right');
+        let superPanel2 = GetPanelParent(superPanel)?.parentElement;
+        superPanel2?.classList.remove('ac-move-very-far-right');
     }
 }
 
@@ -118,7 +103,7 @@ function CreateLinesFor(panel) {
         if (parent == null) break;
 
         let selector = `:scope > button[ac_tgt*="${lastPanel.id}"]`;
-        let from = lastPanel.querySelector('.ac_panel_header');
+        let from = lastPanel.querySelector(':scope > button:not([ac_tgt])');
         let to = parent.querySelector(selector);
 
         let line = CreateLine(from, to);
@@ -132,6 +117,7 @@ function CreateLinesFor(panel) {
 }
 
 function GetPanelParent(panel) {
+    if (panel == null) return null;
     if (panel.id.indexOf('-') == -1) return null;
 
     let idx = panel.id.lastIndexOf('-');
@@ -158,7 +144,7 @@ function IsDeeperThan(a, b) {
 }
 
 function SwitchPanel(newPanel) {
-    let inactive = document.querySelector('.ac-active');
+    let inactive = document.querySelector('.ac-sub-active');
     let active = document.getElementById(newPanel);
 
     SetPanelActive(inactive, false);

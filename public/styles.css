@@ -34,16 +34,20 @@ path {
   transition: transform 0.5s ease, opacity 0.5s ease;
   opacity: 1;
 
+  width: 240px;
   background: #60aaff55;
-  height: 500px;
 }
 
-.ac-panel > h2 {
+.ac-sub-panel {
+  /*ignore*/
+}
+
+.ac-sub-panel-content {
   margin-right: 30px;
   margin-left: 30px;
 }
 
-.ac-panel > button {
+.ac-sub-panel > button {
   display: block;
 
   width: 100%;
@@ -51,13 +55,23 @@ path {
   border: 0px;
 }
 
+
+.ac-active.ac-panel {
+  transform: translateX(0);   
+  pointer-events: auto;
+}
+
+.ac-sub-active {
+  pointer-events: auto;
+}
+
 .ac-inactive {
   pointer-events: none;
 }
 
-.ac-active {
-  transform: translateX(0);   
-  pointer-events: auto;
+.ac-sub-inactive {
+  pointer-events: none;
+  opacity: 0.3;
 }
 
 .ac-move-left {
@@ -66,17 +80,17 @@ path {
 }
 
 .ac-move-right {
-  transform: translateX(300px);
+  transform: translateX(400px);
   opacity: 0.5;
 }
 
 .ac-move-far-right {
-  transform: translateX(500px);
+  transform: translateX(650px);
   opacity: 0.25;
 }
 
 .ac-move-very-far-right {
-  transform: translateX(600px);
+  transform: translateX(650px);
   opacity: 0;
 }
 

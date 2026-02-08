@@ -11,21 +11,7 @@
 <body>
     <h1>Helo</h1>
     <p>
-        The missile knows where it is at all times. It knows this because it knows where it isn't. By subtracting where
-        it is from where it isn't, or where it isn't from where it is (whichever is greater), it obtains a difference,
-        or deviation. The guidance subsystem uses deviations to generate corrective commands to drive the missile from a
-        position where it is to a position where it isn't, and arriving at a position where it wasn't, it now is.
-        Consequently, the position where it is, is now the position that it wasn't, and it follows that the position
-        that it was, is now the position that it isn't.
-        In the event that the position that it is in is not the position that it wasn't, the system has acquired a
-        variation, the variation being the difference between where the missile is, and where it wasn't. If variation is
-        considered to be a significant factor, it too may be corrected by the GEA. However, the missile must also know
-        where it was.
-        The missile guidance computer scenario works as follows. Because a variation has modified some of the
-        information the missile has obtained, it is not sure just where it is. However, it is sure where it isn't,
-        within reason, and it knows where it was. It now subtracts where it should be from where it wasn't, or
-        vice-versa, and by differentiating this from the algebraic sum of where it shouldn't be, and where it was, it is
-        able to obtain the deviation and its variation, which is called error.
+
     </p>
 
     <div class="ac-panel-holder">
@@ -48,87 +34,178 @@
             </defs>
         </svg>
 
-        <div id="ac-1" class="ac-begin ac-panel">
-            <div class="ac-panel-content">
-                <h2 class="ac_panel_header">Main panel</h2>
+
+        <!-- Main layer -->
+        <div class="ac-panel">
+            <div id="ac-1" class="ac-begin ac-sub-panel">
+                <div class="ac-sub-panel-content">
+                    <h2 class="ac_panel_header">Main panel</h2>
+                </div>
+                <button ac_goto="1">Memes</button>
+                <button ac_goto="2">Games</button>
+                <button ac_goto="3">Other Stuff</button>
+                <button ac_goto="4">Social</button>
+                <button ac_goto="5">Links</button>
             </div>
-            <button ac_goto="1">Option 1</button>
-            <button ac_goto="2">Option 2</button>
+        </div>
+
+
+        <!-- First panel layer -->
+        <div class="ac-panel">
+            <div id="ac-1-1" class="ac-sub-panel">
+                <div class="ac-sub-panel-content">
+                    <h2 class="ac_panel_header">Memes</h2>
+                </div>
+                <button ac_goto="1">Random</button>
+                <button ac_goto="2">Newest</button>
+                <button ac_goto="3">Favorites</button>
+                <button ac_goto="4">Info</button>
+                <button ac_goto="back">Back</button>
+            </div>
+
+            <div id="ac-1-2" class="ac-sub-panel">
+                <div class="ac-sub-panel-content">
+                    <h2 class="ac_panel_header">Games</h2>
+                </div>
+                <button ac_goto="1">WIP</button>
+                <button ac_goto="back">Back</button>
+            </div>
+
+            <div id="ac-1-3" class="ac-sub-panel">
+                <div class="ac-sub-panel-content">
+                    <h2 class="ac_panel_header">Other Stuff</h2>
+                </div>
+                <button ac_goto="1">WIP</button>
+                <button ac_goto="back">Back</button>
+            </div>
+
+            <div id="ac-1-4" class="ac-sub-panel">
+                <div class="ac-sub-panel-content">
+                    <h2 class="ac_panel_header">Social</h2>
+                </div>
+                <button ac_goto="1">About</button>
+                <button ac_goto="2">Chat</button>
+                <button ac_goto="3">Guestbook</button>
+                <button ac_goto="4">Friend Sites</button>
+                <button ac_goto="back">Back</button>
+            </div>
+
+            <div id="ac-1-5" class="ac-sub-panel">
+                <div class="ac-sub-panel-content">
+                    <h2 class="ac_panel_header">Links</h2>
+                    <a href="https://github.com/Lepsima">Github</a>
+                </div>
+                <button ac_goto="back">Back</button>
+            </div>
         </div>
 
 
 
-        <div id="ac-1-1" class="ac-panel">
-            <div class="ac-panel-content">
-                <h2 class="ac_panel_header">Panel 1</h2>
+        <!-- Memes -->
+        <div class="ac-panel">
+            <div id="ac-1-1-1" class="ac-sub-panel">
+                <div class="ac-sub-panel-content">
+                    <h2 class="ac_panel_header">Random</h2>
+                    <p>WIP</p>
+                </div>
+                <button ac_goto="back">Back</button>
             </div>
-            <button ac_goto="1">Option 1</button>
-            <button ac_goto="2">Option 2</button>
-            <button ac_goto="back">Back</button>
-        </div>
-        <div id="ac-1-2" class="ac-panel">
-            <div class="ac-panel-content">
-                <h2 class="ac_panel_header">Panel 2</h2>
-            </div>
-            <button ac_goto="1">Option 1</button>
-            <button ac_goto="2">Option 2</button>
-            <button ac_goto="back">Back</button>
-        </div>
-        <div id="ac-1-3" class="ac-panel">
-            <div class="ac-panel-content">
-                <h2 class="ac_panel_header">
-                    Meme gallery
-                </h2>
-            </div>
-            <button ac_goto="back">Back</button>
-            <div id="GENERATE_MEME_LIST"></div>
-        </div>
 
+            <div id="ac-1-1-2" class="ac-sub-panel">
+                <div class="ac-sub-panel-content">
+                    <h2 class="ac_panel_header">Newest</h2>
+                    <p>WIP</p>
+                </div>
+                <button ac_goto="back">Back</button>
+            </div>
 
-        <div id="ac-1-1-1" class="ac-panel">
-            <div class="ac-panel-content">
-                <h2 class="ac_panel_header">Panel 1-1</h2>
+            <div id="ac-1-1-3" class="ac-sub-panel">
+                <div class="ac-sub-panel-content">
+                    <h2 class="ac_panel_header">Favorites</h2>
+                    <p>WIP</p>
+                </div>
+                <button ac_goto="back">Back</button>
             </div>
-            <button ac_goto="1">Option 1</button>
-            <button ac_goto="2">Option 2</button>
-            <button ac_goto="back">Back</button>
-        </div>
-        <div id="ac-1-1-2" class="ac-panel">
-            <div class="ac-panel-content">
-                <h2 class="ac_panel_header">Panel 1-2</h2>
+
+            <div id="ac-1-1-4" class="ac-sub-panel">
+                <div class="ac-sub-panel-content">
+                    <h2 class="ac_panel_header">Info</h2>
+                    <p>WIP</p>
+                </div>
+                <button ac_goto="back">Back</button>
             </div>
-            <button ac_goto="back">Back</button>
-        </div>
-        <div id="ac-1-2-1" class="ac-panel">
-            <div class="ac-panel-content">
-                <h2 class="ac_panel_header">Panel 2-1</h2>
-            </div>
-            <button ac_goto="back">Back</button>
-        </div>
-        <div id="ac-1-2-2" class="ac-panel">
-            <div class="ac-panel-content">
-                <h2 class="ac_panel_header">Panel 2-2</h2>
-            </div>
-            <button ac_goto="back">Back</button>
         </div>
 
 
 
-        <div id="ac-1-1-1-1" class="ac-panel">
-            <div class="ac-panel-content">
-                <h2 class="ac_panel_header">Panel 1-1-1</h2>
+        <!-- Games -->
+        <div class="ac-panel">
+            <div id="ac-1-2-1" class="ac-sub-panel">
+                <div class="ac-sub-panel-content">
+                    <h2 class="ac_panel_header">Games</h2>
+                </div>
+                <button ac_goto="1">Option 1</button>
+                <button ac_goto="back">Back</button>
             </div>
-            <button ac_goto="back">Back</button>
         </div>
-        <div id="ac-1-1-1-2" class="ac-panel">
-            <div class="ac-panel-content">
-                <h2 class="ac_panel_header">Panel 1-1-2</h2>
+
+
+
+        <!-- Other stuff -->
+        <div class="ac-panel">
+            <div id="ac-1-3-1" class="ac-sub-panel">
+                <div class="ac-sub-panel-content">
+                    <h2 class="ac_panel_header">Other Stuff</h2>
+                </div>
+                <button ac_goto="1">Option 1</button>
+                <button ac_goto="back">Back</button>
             </div>
-            <button ac_goto="back">Back</button>
+        </div>
+
+
+
+        <!-- Social -->
+        <div class="ac-panel">
+            <div id="ac-1-4-1" class="ac-sub-panel">
+                <div class="ac-sub-panel-content">
+                    <h2 class="ac_panel_header">About</h2>
+                    <p>
+                        The missile knows where it is at all times. It knows this because it knows where it isn't. By
+                        subtracting where it is from where it isn't
+                    </p>
+                </div>
+                <button ac_goto="back">Back</button>
+            </div>
+
+            <div id="ac-1-4-2" class="ac-sub-panel">
+                <div class="ac-sub-panel-content">
+                    <h2 class="ac_panel_header">Chat</h2>
+                    <p>WIP</p>
+                </div>
+                <button ac_goto="back">Back</button>
+            </div>
+
+            <div id="ac-1-4-3" class="ac-sub-panel">
+                <div class="ac-sub-panel-content">
+                    <h2 class="ac_panel_header">Guestbook</h2>
+                    <p>WIP</p>
+                </div>
+                <button ac_goto="back">Back</button>
+            </div>
+
+            <div id="ac-1-4-4" class="ac-sub-panel">
+                <div class="ac-sub-panel-content">
+                    <h2 class="ac_panel_header">Friend pages</h2>
+                    <a href="https://jehad-does-stuff.neocities.org/">Jehad does stuff</a>
+                    <a href="https://epiccooldog.neocities.org/">Epic cool dog</a>
+                    <a href="https://lampoli-lair.neocities.org/">Lampoli</a>
+                </div>
+                <button ac_goto="back">Back</button>
+            </div>
         </div>
     </div>
-
     <script type="module" src="js/meme_importer.js"></script>
+    <script src="js/meme_gallery.js"></script>
     <script src="js/ac_panel_script.js"></script>
 </body>
 
