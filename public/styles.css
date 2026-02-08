@@ -21,10 +21,8 @@ svg#lines {
 
 path {
   fill: none;
-  stroke: black;
   stroke-width: 4;
 }
-
 
 .ac-panel {
     position: absolute;
@@ -64,4 +62,17 @@ path {
 .ac-move-very-far-right {
     transform: translateX(600px);
     opacity: 0;
+}
+
+.ac-line-dep-0 {
+  stroke: url(#gradient_0);
+}
+
+
+.ac-line-dep-1 {
+  stroke: url(#gradient_1);
+}
+
+.ac-line-dep-2 {
+  stroke: url(#gradient_2);
 }

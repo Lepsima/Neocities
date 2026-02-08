@@ -18,7 +18,22 @@
 
     <div class="ac-panel-holder">
         <svg id="lines">
+            <defs>
+                <linearGradient id="gradient_0">
+                    <stop offset="0%" stop-color="#888" />
+                    <stop offset="100%" stop-color="#AAA" />
+                </linearGradient>
 
+                <linearGradient id="gradient_1">
+                    <stop offset="0%" stop-color="#AAA" />
+                    <stop offset="100%" stop-color="#DDD" />
+                </linearGradient>
+
+                <linearGradient id="gradient_2">
+                    <stop offset="0%" stop-color="#DDD" />
+                    <stop offset="100%" stop-color="#FFFF" />
+                </linearGradient>
+            </defs>
         </svg>
 
         <div id="ac-1" class="ac-begin ac-panel">
@@ -27,54 +42,57 @@
             <button ac_goto="2">Option 2</button>
         </div>
 
-        <div id="ac-1-1" class="ac-panel">
-            <p class="ac_panel_header">Panel 1</p>
-            <button ac_goto="1">Option 1</button>
-            <button ac_goto="2">Option 2</button>
-            <button ac_goto="back">Back</button>
+        <div class="ac-panel-holder">
+            <div id="ac-1-1" class="ac-panel">
+                <p class="ac_panel_header">Panel 1</p>
+                <button ac_goto="1">Option 1</button>
+                <button ac_goto="2">Option 2</button>
+                <button ac_goto="back">Back</button>
+            </div>
+
+            <div id="ac-1-2" class="ac-panel">
+                <p class="ac_panel_header">Panel 2</p>
+                <button ac_goto="1">Option 1</button>
+                <button ac_goto="2">Option 2</button>
+                <button ac_goto="back">Back</button>
+            </div>
         </div>
 
-        <div id="ac-1-2" class="ac-panel">
-            <p class="ac_panel_header">Panel 2</p>
-            <button ac_goto="1">Option 1</button>
-            <button ac_goto="2">Option 2</button>
-            <button ac_goto="back">Back</button>
+        <div class="ac-panel-holder">
+            <div id="ac-1-1-1" class="ac-panel">
+                <p class="ac_panel_header">Panel 1-1</p>
+                <button ac_goto="1">Option 1</button>
+                <button ac_goto="2">Option 2</button>
+                <button ac_goto="back">Back</button>
+            </div>
+
+            <div id="ac-1-1-2" class="ac-panel">
+                <p class="ac_panel_header">Panel 1-2</p>
+                <button ac_goto="back">Back</button>
+            </div>
+            <div id="ac-1-2-1" class="ac-panel">
+                <p class="ac_panel_header">Panel 2-1</p>
+                <button ac_goto="back">Back</button>
+            </div>
+
+            <div id="ac-1-2-2" class="ac-panel">
+                <p class="ac_panel_header">Panel 2-2</p>
+                <button ac_goto="back">Back</button>
+            </div>
         </div>
 
-        <div id="ac-1-1-1" class="ac-panel">
-            <p class="ac_panel_header">Panel 1-1</p>
-            <button ac_goto="1">Option 1</button>
-            <button ac_goto="2">Option 2</button>
-            <button ac_goto="back">Back</button>
-        </div>
+        <div class="ac-panel-holder">
+            <div id="ac-1-1-1-1" class="ac-panel">
+                <p class="ac_panel_header">Panel 1-1-1</p>
+                <button ac_goto="back">Back</button>
+            </div>
 
-        <div id="ac-1-1-2" class="ac-panel">
-            <p class="ac_panel_header">Panel 1-2</p>
-            <button ac_goto="back">Back</button>
+            <div id="ac-1-1-1-2" class="ac-panel">
+                <p class="ac_panel_header">Panel 1-1-2</p>
+                <button ac_goto="back">Back</button>
+            </div>
         </div>
-
-        <div id="ac-1-1-1-1" class="ac-panel">
-            <p class="ac_panel_header">Panel 1-1-1</p>
-            <button ac_goto="back">Back</button>
-        </div>
-
-        <div id="ac-1-1-1-2" class="ac-panel">
-            <p class="ac_panel_header">Panel 1-1-2</p>
-            <button ac_goto="back">Back</button>
-        </div>
-
-        <div id="ac-1-2-1" class="ac-panel">
-            <p class="ac_panel_header">Panel 2-1</p>
-            <button ac_goto="back">Back</button>
-        </div>
-
-        <div id="ac-1-2-2" class="ac-panel">
-            <p class="ac_panel_header">Panel 2-2</p>
-            <button ac_goto="back">Back</button>
-        </div>
-
     </div>
-
     <script src="ac_panel_script.js"></script>
 </body>
 

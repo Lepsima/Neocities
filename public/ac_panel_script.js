@@ -11,6 +11,11 @@ function InitPanels() {
         SetPanelActive(panel, false);
         AnimatePanelTowards(panel, false, false);
 
+        let idx = panel.id.lastIndexOf('-');
+        let panelIndex = panel.id.slice(idx + 1);
+        let ypos = panelIndex * 75 + 50;
+        panel.style.top = ypos + 'px';
+
         // Set button actions
         let buttons = panel.querySelectorAll(":scope > button");
         buttons.forEach(button => {
@@ -18,12 +23,9 @@ function InitPanels() {
             let panelID = `${panel.id}-${subpanel}`;
 
             if (subpanel == "back") {
-                let idx = panel.id.lastIndexOf('-');
                 panelID = panel.id.slice(0, idx);
 
             } else {
-                let other = document.getElementById(panelID);
-                CreateLine(other, button);
                 button.setAttribute('ac_tgt', panelID);
             }
 
@@ -87,18 +89,22 @@ function AnimatePanelTowards(panel, right, animateParent) {
 
 function CreateLinesFor(panel) {
     RemoveAllLines();
-
+    let depth = 0;
     let lastPanel = panel;
 
-    while (true) {
+    while (depth < 32) {
         let parent = GetPanelParent(lastPanel);
         if (parent == null) break;
 
         let selector = `:scope > button[ac_tgt*="${lastPanel.id}"]`;
         let from = lastPanel.querySelector('.ac_panel_header');
         let to = parent.querySelector(selector);
-        CreateLine(from, to);
 
+        let line = CreateLine(from, to);
+        let lineDepth = Math.min(2, depth);
+        line.path.classList.add(`ac-line-dep-${lineDepth}`);
+
+        depth++;
         lastPanel = parent;
     }
     return;
