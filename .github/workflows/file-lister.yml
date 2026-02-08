@@ -1,5 +1,8 @@
 name: Generate file list
 
+permissions:
+  contents: write
+
 on:
   push:
     paths:
