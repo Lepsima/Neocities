@@ -1,0 +1,26 @@
+name: Generate file list
+
+on:
+  push:
+    paths:
+      - "memes/**"
+  workflow_dispatch:
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Generate JSON meme list
+        run: |
+          mkdir -p data
+          ls assets | jq -R . | jq -s '{ files: . }' > public/memes.json
+
+      - name: Commit and push changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Update meme list"
+          file_pattern: public/memes.json
