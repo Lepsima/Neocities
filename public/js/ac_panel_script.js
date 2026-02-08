@@ -3,6 +3,22 @@ const lines = [];
 
 InitPanels();
 Animate();
+ImportMemes();
+
+async function ImportMemes() {
+    const memeImporter = await import("./meme_importer.js");
+    const memes = memeImporter.GetMemeData();
+    console.log(memes);
+
+    DisplayMeme(memes.files[0]);
+}
+function DisplayMeme(url) {
+    let src = 'https://github.com/Lepsima/Neocities/tree/memes_test/memes/' + url;
+    let img = document.createElement('img');
+
+    img.src = src;
+    document.body.appendChild(img);
+}
 
 function InitPanels() {
     let panels = document.querySelectorAll('.ac-panel');

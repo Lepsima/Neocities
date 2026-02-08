@@ -6,7 +6,7 @@ permissions:
 on:
   push:
     paths:
-      - "memes/**"
+      - "assets/**"
   workflow_dispatch:
 
 jobs:
@@ -19,7 +19,7 @@ jobs:
 
       - name: Generate JSON meme list
         run: |
-          ls memes | jq -R . | jq -s '{ files: . }' > public/memes.json
+          ls assets | jq -R . | jq -s '{ files: . }' > public/memes.json
 
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v5
