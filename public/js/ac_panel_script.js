@@ -10,10 +10,13 @@ async function ImportMemes() {
     const memes = memeImporter.GetMemeData();
     console.log(memes);
 
-    DisplayMeme(memes.files[0]);
+    memes.files.forEach(meme => {
+        DisplayMeme(meme);
+
+    })
 }
 function DisplayMeme(url) {
-    let src = 'https://github.com/Lepsima/Neocities/tree/memes_test/memes/' + url;
+    let src = 'https://lepsima.github.io/Neocities/assets/' + url;
     let img = document.createElement('img');
 
     img.src = src;
