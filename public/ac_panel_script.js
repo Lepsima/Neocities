@@ -13,8 +13,8 @@ function InitPanels() {
 
         let idx = panel.id.lastIndexOf('-');
         let panelIndex = panel.id.slice(idx + 1);
-        let ypos = panelIndex * 75 + 50;
-        panel.style.top = ypos + 'px';
+        let ypos = (panelIndex - 1) * 75;
+        panel.style.top = panel.offsetTop + ypos + 'px';
 
         // Set button actions
         let buttons = panel.querySelectorAll(":scope > button");
