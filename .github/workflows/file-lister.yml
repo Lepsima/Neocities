@@ -16,8 +16,7 @@ jobs:
 
       - name: Generate JSON meme list
         run: |
-          mkdir -p data
-          ls assets | jq -R . | jq -s '{ files: . }' > public/memes.json
+          ls memes | jq -R . | jq -s '{ files: . }' > public/memes.json
 
       - name: Commit and push changes
         uses: stefanzweifel/git-auto-commit-action@v5
