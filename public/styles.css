@@ -5,11 +5,36 @@ html {
   font-optical-sizing: auto;
 }
 
+#container {
+  position: relative;
+  width: 100%;
+  height: 400px;
+}
+
+svg#lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+path {
+  fill: none;
+  stroke: black;
+  stroke-width: 4;
+}
+
+
 .ac-panel {
     position: absolute;
     display: inline;
     transition: transform 0.5s ease, opacity 0.5s ease;
     opacity: 1;
+}
+
+.ac-panel > button {
+    display: block;
 }
 
 .ac-inactive {
