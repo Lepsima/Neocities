@@ -1,5 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Doto:wght@900&display=swap');
 
+@property --move {
+  syntax: "<length>";
+  initial-value: 0px;
+  inherits: false;
+}
+
+@property --skew_prog {
+  syntax: "<number>";
+  initial-value: 0;
+  inherits: false;
+}
+
 * {
   font-family: "Doto", sans-serif;
   font-optical-sizing: auto;
@@ -31,8 +43,14 @@ path {
 .ac-panel {
   position: absolute;
   display: inline;
-  transition: transform 0.5s ease, opacity 0.5s ease;
+
+  --move: 0px;
+  --skew: 0deg;
+
   opacity: 1;
+  transform: 
+    translateX(var(--move)) 
+    skew(calc(var(--skew) * var(--skew_prog)));
 
   width: 240px;
   background: #60aaff55;
@@ -55,18 +73,13 @@ path {
   border: 0px;
 }
 
-
-.ac-active.ac-panel {
-  transform: translateX(0);   
-  pointer-events: auto;
+.ac-anim-trigger {
+  transition: opacity 0.5s ease, --move 0.5s ease;
+  animation: PanelSkewAnim 0.5s ease;
 }
 
 .ac-sub-active {
   pointer-events: auto;
-}
-
-.ac-inactive {
-  pointer-events: none;
 }
 
 .ac-sub-inactive {
@@ -74,30 +87,61 @@ path {
   opacity: 0.3;
 }
 
+.ac-active.ac-panel {
+  pointer-events: auto;
+}
+
+.ac-active {
+  --move: 0px;
+  --skew: 5deg;
+  opacity: 1;
+}
+
+.ac-inactive {
+  pointer-events: none;
+  opacity: 1;
+}
+
 .ac-move-left {
-  transform: translateX(-1000px);
-  opacity: 0;
+  --move: -500px;
+  --skew: 4deg;
+  flex-direction: row;
+  opacity: 0.5;
 }
 
 .ac-move-right {
-  transform: translateX(400px);
+  --move: 450px;
+  --skew: 4deg;
   opacity: 0.5;
 }
 
 .ac-move-far-right {
-  transform: translateX(650px);
+  --move: 750px;
+  --skew: 3deg;
   opacity: 0.25;
 }
 
 .ac-move-very-far-right {
-  transform: translateX(650px);
+  --move: 750px;
+  --skew: 2deg;
   opacity: 0;
+}
+
+@keyframes PanelSkewAnim {
+  0% {
+    --skew_prog: 0;
+  }
+  50% {
+    --skew_prog: 1;
+  }
+  100% {
+    --skew_prog: 0;
+  }
 }
 
 .ac-line-dep-0 {
   stroke: url(#gradient_0);
 }
-
 
 .ac-line-dep-1 {
   stroke: url(#gradient_1);

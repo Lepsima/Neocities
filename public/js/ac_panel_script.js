@@ -44,19 +44,20 @@ function SetPanelActive(subpanel, active) {
         panel.classList.remove('ac-move-right');
         panel.classList.remove('ac-move-left');
 
+        subpanel.classList.remove('ac-sub-inactive');
+        subpanel.classList.add('ac-sub-active');
+
         // Activate panel
         panel.classList.remove('ac-inactive');
-        subpanel.classList.remove('ac-sub-inactive');
-
         panel.classList.add('ac-active');
-        subpanel.classList.add('ac-sub-active');
+
     } else {
+        subpanel.classList.remove('ac-sub-active');
+        subpanel.classList.add('ac-sub-inactive');
+
         // Deactivate panel
         panel.classList.remove('ac-active');
-        subpanel.classList.remove('ac-sub-active');
-
         panel.classList.add('ac-inactive');
-        subpanel.classList.add('ac-sub-inactive');
     }
 }
 
@@ -71,25 +72,24 @@ function AnimatePanelTowards(subpanel, right, animateParent) {
         panel.classList.add('ac-move-left');
     }
 
-    if (!animateParent) return;
+    if (animateParent) {
+        let parentSubpanel = GetPanelParent(subpanel);
+        if (parentSubpanel == null) return;
+        let parentPanel = parentSubpanel.parentElement;
 
-    let parentSubpanel = GetPanelParent(subpanel);
-    if (parentSubpanel == null) return;
-    let parentPanel = parentSubpanel.parentElement;
-
-    let superSubpanel = GetPanelParent(parentSubpanel);
-    let superPanel = superSubpanel == undefined ? undefined : superSubpanel.parentElement;
-
-    if (right) {
-        parentPanel?.classList.add('ac-move-far-right');
-        superPanel?.classList.add('ac-move-very-far-right');
-
-    } else {
-        parentPanel?.classList.remove('ac-move-far-right');
-        superPanel?.classList.remove('ac-move-far-right');
-
+        let superSubpanel = GetPanelParent(parentSubpanel);
+        let superPanel = superSubpanel == undefined ? undefined : superSubpanel.parentElement;
         let superPanel2 = GetPanelParent(superPanel)?.parentElement;
-        superPanel2?.classList.remove('ac-move-very-far-right');
+
+        if (right) {
+            parentPanel?.classList.add('ac-move-far-right');
+            superPanel?.classList.add('ac-move-very-far-right');
+
+        } else {
+            parentPanel?.classList.remove('ac-move-far-right');
+            superPanel?.classList.remove('ac-move-far-right');
+            superPanel2?.classList.remove('ac-move-very-far-right');
+        }
     }
 }
 
@@ -147,13 +147,27 @@ function SwitchPanel(newPanel) {
     let inactive = document.querySelector('.ac-sub-active');
     let active = document.getElementById(newPanel);
 
+    ClearAnimations();
     SetPanelActive(inactive, false);
     SetPanelActive(active, true);
 
     let isNewDeeper = IsDeeperThan(active, inactive);
     AnimatePanelTowards(inactive, isNewDeeper, true);
 
+    PlayAnimations();
     CreateLinesFor(active);
+}
+
+function ClearAnimations() {
+    document.querySelectorAll('.ac-anim-trigger').forEach(panel => {
+        panel.classList.remove('ac-anim-trigger');
+    });
+}
+
+function PlayAnimations() {
+    document.querySelectorAll('.ac-panel').forEach(panel => {
+        panel.classList.add('ac-anim-trigger');
+    });
 }
 
 function CreateLine(a, b) {
