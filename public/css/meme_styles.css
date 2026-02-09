@@ -1,10 +1,36 @@
 #meme-panel {
     float: right;
 
-    transform: translateX(0px);
-    transition: transform 1s ease;
+    --img_size: 500px;
+    width: var(--img_size);
+    
+    transform: translateX(var(--img_size));
+    transition: transform 1s ease-in-out;
 }
 
-#meme-panel .active {
-    transform: translate(500px);
+#meme-navigation {
+    display: flex;
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+#meme-navigation > button {
+  flex: 1;
+  background: #a3b1d1;
+  transition: transform 0.25s ease;
+}
+
+#meme-navigation > button:hover {
+  background: rgb(255, 255, 255);
+  transform: scale(1.15);
+}
+
+#meme-media {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+#meme-panel.active {
+    transform: translateX(0px);
 }

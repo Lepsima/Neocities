@@ -1,6 +1,11 @@
 ImportMemes();
 let memes = null;
 let currentMeme = 0;
+let timeoutID = null;
+let mode = null;
+
+let mediaClass = 'meme-media';
+let panelClass = 'meme-panel';
 
 async function ImportMemes() {
     const memeImporter = await import("./meme_importer.js");
@@ -9,17 +14,32 @@ async function ImportMemes() {
 
 function GetRandomMeme() {
     const random = Math.floor(Math.random() * memes.length);
-    currentMeme = random;
-    return GetSource(memes[currentMeme]);
+    currentMeme = random;    
+    return GetCurrentMeme();
+}
+
+function LoadNextMeme(dir) {
+    if (mode == null || mode == "newest") {
+        LoadMeme(GetNextMeme(dir));
+    } else if (mode == "random") {
+        LoadMeme(GetRandomMeme());
+    }
+
 }
 
 function GetNextMeme(dir) {
-    if (dir) currentMeme++;
-    else currentMeme--;
+    if (dir == '2') 
+        currentMeme++;
+    else 
+        currentMeme--;
 
     if (currentMeme < 0) currentMeme = memes.length - 1;
     if (currentMeme >= memes.length) currentMeme = 0;
 
+    return GetCurrentMeme();
+}
+
+function GetCurrentMeme() {
     return GetSource(memes[currentMeme]);
 }
 
@@ -29,37 +49,60 @@ function GetSource(url) {
 
 document.addEventListener("meme-random",
     function () {
-        Load(GetRandomMeme());
+        LoadMeme(GetRandomMeme());
+        mode = "random";
     });
 
 document.addEventListener("meme-newest",
     function () {
-        console.debug("Newest");
+        LoadMeme(GetCurrentMeme());
+        mode = "newest";
     });
 
 document.addEventListener("meme-favs",
     function () {
         console.debug("Favs");
+        mode = null;
     });
 
 document.addEventListener("empty-panel",
     function () {
-
+        Unload();
+        mode = null;
     });
 
-function Load(url) {
-    const panel = document.getElementById("meme-panel");
-    panel.innerHTML = "";
+function LoadMeme(url) {
+    const panel = document.getElementById(panelClass);
+    panel.classList.add("active");
+
+    RemoveMedia();
 
     if (url.match(/\.(jpg|jpeg|png|gif|webp)$/)) {
-        panel.innerHTML = `<img src="${url}">`;
+        panel.innerHTML += `<img id="${mediaClass}" src="${url}">`;
     }
     else if (url.match(/\.(mp4|qt|webm|ogg)$/)) {
-        panel.innerHTML = `
-      <video src="${url}" autoplay loop muted></video>
-    `;
+        panel.innerHTML += `<video id="${mediaClass}" src="${url}" autoplay loop muted></video>`;
     }
     else {
-        panel.innerHTML = `<iframe src="${url}"></iframe>`;
+        panel.innerHTML += `<iframe id="${mediaClass}" src="${url}"></iframe>`;
     }
 }
+
+function Unload() {
+    const panel = document.getElementById("meme-panel");
+    panel.classList.remove("active");
+
+    if (timeoutID != null) clearTimeout(timeoutID);
+    timeoutID = setTimeout(RemoveMedia, 1000);
+}
+
+function RemoveMedia() {
+    if (timeoutID != null) {
+        clearTimeout(timeoutID);
+        timeoutID = null;
+    }
+
+    const mediaElement = document.getElementById(mediaClass);
+    mediaElement?.remove();
+}
+

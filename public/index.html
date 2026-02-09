@@ -108,7 +108,7 @@
             <div id="ac-1-1-1" class="ac-sub-panel" action="meme-random">
                 <div class="ac-sub-panel-content">
                     <h2 class="ac_panel_header">Random</h2>
-                    <p>WIP</p>
+                    <p>Random meme every time</p>
                 </div>
                 <button ac_goto="back">Back</button>
             </div>
@@ -116,7 +116,7 @@
             <div id="ac-1-1-2" class="ac-sub-panel" action="meme-newest">
                 <div class="ac-sub-panel-content">
                     <h2 class="ac_panel_header">Newest</h2>
-                    <p>Idk yet how to do this</p>
+                    <p>Shows memes in alphabetical order</p>
                 </div>
                 <button ac_goto="back">Back</button>
             </div>
@@ -208,7 +208,10 @@
     </div>
 
     <div id="meme-panel">
-        <video id="meme-img"></video>
+        <div id="meme-navigation">
+            <button onclick="LoadNextMeme('1')">Left</button>
+            <button onclick="LoadNextMeme('2')">Right</button>
+        </div>
     </div>
 
     <script type="module" src="js/meme_importer.js"></script>
