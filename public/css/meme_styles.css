@@ -1,0 +1,10 @@
+.meme-panel {
+    float: left;
+
+    transform: translateX(0px);
+    transition: transform 1s ease;
+}
+
+.meme-panel .active {
+    transform: translate(500px);
+}
