@@ -42,7 +42,7 @@ path {
   opacity: 1;
   transform: translateX(var(--move));
 
-  width: 240px;
+  width: 200px;
   background: #60aaff55;
 }
 
@@ -71,7 +71,12 @@ path {
   pointer-events: auto;
 }
 
-.ac-sub-inactive {
+.ac-active .ac-sub-inactive {
+  pointer-events: none;
+  opacity: 0.15;
+}
+
+.ac-inactive .ac-sub-inactive {
   pointer-events: none;
   opacity: 0.3;
 }
@@ -97,17 +102,17 @@ path {
 }
 
 .ac-move-right {
-  --move: 450px;
+  --move: 350px;
   opacity: 0.5;
 }
 
 .ac-move-far-right {
-  --move: 750px;
+  --move: 600px;
   opacity: 0.25;
 }
 
 .ac-move-very-far-right {
-  --move: 750px;
+  --move: 600px;
   opacity: 0;
 }
 
