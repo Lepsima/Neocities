@@ -14,7 +14,7 @@ async function ImportMemes() {
 
 function GetRandomMeme() {
     const random = Math.floor(Math.random() * memes.length);
-    currentMeme = random;    
+    currentMeme = random;
     return GetCurrentMeme();
 }
 
@@ -28,9 +28,9 @@ function LoadNextMeme(dir) {
 }
 
 function GetNextMeme(dir) {
-    if (dir == '2') 
+    if (dir == '2')
         currentMeme++;
-    else 
+    else
         currentMeme--;
 
     if (currentMeme < 0) currentMeme = memes.length - 1;
@@ -80,8 +80,8 @@ function LoadMeme(url) {
     if (url.match(/\.(jpg|jpeg|png|gif|webp)$/)) {
         panel.innerHTML += `<img id="${mediaClass}" src="${url}">`;
     }
-    else if (url.match(/\.(mp4|qt|webm|ogg)$/)) {
-        panel.innerHTML += `<video id="${mediaClass}" src="${url}" autoplay loop muted></video>`;
+    else if (url.match(/\.(mp4|qt|webm|ogg|mov|MP4)$/)) {
+        panel.innerHTML += `<video id="${mediaClass}" src="${url}" autoplay loop></video>`;
     }
     else {
         panel.innerHTML += `<iframe id="${mediaClass}" src="${url}"></iframe>`;
