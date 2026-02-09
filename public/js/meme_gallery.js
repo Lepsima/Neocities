@@ -26,3 +26,40 @@ function GetNextMeme(dir) {
 function GetSource(url) {
     return 'https://lepsima.github.io/Neocities/assets/' + url;
 }
+
+document.addEventListener("meme-random",
+    function () {
+        Load(GetRandomMeme());
+    });
+
+document.addEventListener("meme-newest",
+    function () {
+        console.debug("Newest");
+    });
+
+document.addEventListener("meme-favs",
+    function () {
+        console.debug("Favs");
+    });
+
+document.addEventListener("empty-panel",
+    function () {
+
+    });
+
+function Load(url) {
+    const panel = document.getElementById("meme-panel");
+    panel.innerHTML = "";
+
+    if (url.match(/\.(jpg|jpeg|png|gif|webp)$/)) {
+        panel.innerHTML = `<img src="${url}">`;
+    }
+    else if (url.match(/\.(mp4|qt|webm|ogg)$/)) {
+        panel.innerHTML = `
+      <video src="${url}" autoplay loop muted></video>
+    `;
+    }
+    else {
+        panel.innerHTML = `<iframe src="${url}"></iframe>`;
+    }
+}

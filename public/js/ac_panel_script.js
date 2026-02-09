@@ -40,6 +40,15 @@ function SetPanelActive(subpanel, active) {
     let panel = subpanel.parentElement;
 
     if (active) {
+        let action = subpanel.getAttribute('action');
+        if (action == null) action = "empty-panel";
+
+        let event = new Event(action);
+        document.dispatchEvent(event);
+    }
+
+    document
+    if (active) {
         // remove anims
         panel.classList.remove('ac-move-right');
         panel.classList.remove('ac-move-left');
