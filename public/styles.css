@@ -6,12 +6,6 @@
   inherits: false;
 }
 
-@property --skew_prog {
-  syntax: "<number>";
-  initial-value: 0;
-  inherits: false;
-}
-
 * {
   font-family: "Doto", sans-serif;
   font-optical-sizing: auto;
@@ -45,12 +39,8 @@ path {
   display: inline;
 
   --move: 0px;
-  --skew: 0deg;
-
   opacity: 1;
-  transform: 
-    translateX(var(--move)) 
-    skew(calc(var(--skew) * var(--skew_prog)));
+  transform: translateX(var(--move));
 
   width: 240px;
   background: #60aaff55;
@@ -75,7 +65,6 @@ path {
 
 .ac-anim-trigger {
   transition: opacity 0.5s ease, --move 0.5s ease;
-  animation: PanelSkewAnim 0.5s ease;
 }
 
 .ac-sub-active {
@@ -93,7 +82,6 @@ path {
 
 .ac-active {
   --move: 0px;
-  --skew: 5deg;
   opacity: 1;
 }
 
@@ -104,39 +92,23 @@ path {
 
 .ac-move-left {
   --move: -500px;
-  --skew: 4deg;
   flex-direction: row;
   opacity: 0.5;
 }
 
 .ac-move-right {
   --move: 450px;
-  --skew: 4deg;
   opacity: 0.5;
 }
 
 .ac-move-far-right {
   --move: 750px;
-  --skew: 3deg;
   opacity: 0.25;
 }
 
 .ac-move-very-far-right {
   --move: 750px;
-  --skew: 2deg;
   opacity: 0;
-}
-
-@keyframes PanelSkewAnim {
-  0% {
-    --skew_prog: 0;
-  }
-  50% {
-    --skew_prog: 1;
-  }
-  100% {
-    --skew_prog: 0;
-  }
 }
 
 .ac-line-dep-0 {
