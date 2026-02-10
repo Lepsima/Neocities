@@ -37,7 +37,7 @@ path {
 .ac_panel_header {
   background: hsl(15, 92%, 50%);
   color: white;
-  
+
   width: 100%;
   margin-top: 0px;
   margin-bottom: 0px;
@@ -55,12 +55,25 @@ path {
   position: absolute;
   display: inline;
 
+  padding: 25px;
+
   --move: 0px;
   opacity: 1;
   transform: translateX(var(--move));
 
   width: 200px;
   color:white;
+  
+  max-height: 80%; 
+  overflow-y: auto;
+
+  overscroll-behavior: contain;
+  scrollbar-width: none;
+}
+
+
+.ac-panel::-webkit-scrollbar {
+  display: none;
 }
 
 .ac-sub-panel-content {
@@ -68,29 +81,46 @@ path {
   text-align: center;
 }
 
+.text-link {
+  display: block;
+
+  border: 5px;
+  font-size: 18px;
+  border-style: outset;
+
+  color: black;
+  background: hsl(0, 0%, 90%);
+  border-color: hsl(0, 0%, 100%);
+  
+  border-radius: 5px;
+  transition: transform 0.25s ease;
+}
+
+.text-link:hover {
+  transform: scale(1.075);
+}
+
 .ac-sub-panel > button {
   display: block;
+  height: 40px;
+  width: 100%;
+
   border: 5px;
+  font-size: 18px;
   border-style: outset;
   transition: transform 0.25s ease;
   
   color: white;
   background: hsl(0, 0%, 40%);
   border-color: hsl(0, 0%, 50%);
-
-  width: 100%;
-  height: 40px;
 }
 
 .ac-sub-panel > button:hover {
-  display: block;
-  
   color: black;
   background: hsl(0, 0%, 90%);
   border-color: hsl(0, 0%, 100%);
 
   transform: scale(1.15);
-  z-index: 10;
 }
 
 .ac-anim-trigger {
