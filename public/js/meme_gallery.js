@@ -1,6 +1,6 @@
 ImportMemes();
 
-fetch('https://corsproxy.io/?url=https://neocities.org/api/info?sitename=lepsima')
+fetch("https://weirdscifi.ratiosemper.com/neocities.php?sitename=lepsima")
     .then((response) => response.json())
     .then((json) => console.log(json));
 
