@@ -31,6 +31,24 @@ path {
 }
 
 .ac-panel-holder {
+  padding-left: 25px;
+}
+
+.ac_panel_header {
+  background: hsl(15, 92%, 50%);
+  color: white;
+  
+  width: 100%;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.ac-sub-panel {
+  color: hsl(0, 0%, 90%);
+  background: hsl(0, 0%, 25%);
+  margin-bottom: 20px;
 }
 
 .ac-panel {
@@ -45,37 +63,38 @@ path {
   color:white;
 }
 
-.ac-sub-panel {
-  color:white;
-  background: hsl(15, 92%, 50%);
-}
-
 .ac-sub-panel-content {
-  margin-right: 30px;
-  margin-left: 30px;
   padding-top: 0.01px;
+  text-align: center;
 }
 
 .ac-sub-panel > button {
   display: block;
-  background: #a3b1d1;
+  border: 5px;
+  border-style: outset;
   transition: transform 0.25s ease;
+  
+  color: white;
+  background: hsl(0, 0%, 40%);
+  border-color: hsl(0, 0%, 50%);
 
   width: 100%;
-  height: 30px;
-  border: 0px;
+  height: 40px;
 }
 
 .ac-sub-panel > button:hover {
   display: block;
-  background: rgb(255, 255, 255);
+  
+  color: black;
+  background: hsl(0, 0%, 90%);
+  border-color: hsl(0, 0%, 100%);
 
   transform: scale(1.15);
   z-index: 10;
 }
 
 .ac-anim-trigger {
-  transition: opacity 0.5s ease, --move 0.5s ease;
+  transition: filter 0.5s ease, opacity 0.5s ease, --move 0.5s ease;
 }
 
 .ac-sub-active {
@@ -84,7 +103,8 @@ path {
 
 .ac-active .ac-sub-inactive {
   pointer-events: none;
-  opacity: 0.15;
+  opacity: 0.1;
+  filter: blur(1px);
 }
 
 .ac-inactive .ac-sub-inactive {
@@ -109,7 +129,9 @@ path {
 .ac-move-left {
   --move: -500px;
   flex-direction: row;
-  opacity: 0.3;
+
+  opacity: 0.1;
+  filter: blur(25px);
 }
 
 .ac-move-right {
@@ -127,10 +149,6 @@ path {
 .ac-move-very-far-right {
   --move: 600px;
   opacity: 0;
-}
-
-.ac-sub-panel.ac-sub-inactive {
-  background: hsl(15, 92%, 20%);
 }
 
 .ac-line-dep-0 {

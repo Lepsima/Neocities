@@ -31,6 +31,13 @@
     height: auto;
 }
 
+#serving-memes {
+    text-align: left;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 0px;
+}
+
 #meme-panel.active {
     transform: translateX(0px);
 }

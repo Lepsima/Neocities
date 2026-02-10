@@ -15,6 +15,25 @@ let panelClass = 'meme-panel';
 async function ImportMemes() {
     const memeImporter = await import("./meme_importer.js");
     memes = memeImporter.GetMemeData().files;
+
+    let images = 0;
+    let videos = 0;
+
+    memes.forEach(meme => {
+        if (meme.match(/\.(gif|GIF|mp4|qt|webm|ogg|mov|MP4)$/)) {
+            videos++;
+        } else {
+            images++;
+        }
+    })
+
+    let infotext = document.getElementById('serving-memes');
+    infotext.innerHTML =
+        `
+Serving <i>${memes.length}</i> memes
+<i>${videos}</i> Videos / Gifs
+<i>${images}</i> Images
+        `;
 }
 
 function GetRandomMeme() {
@@ -60,6 +79,7 @@ document.addEventListener("meme-random",
 
 document.addEventListener("meme-newest",
     function () {
+        currentMeme = memes.length - 1;
         LoadMeme(GetCurrentMeme());
         mode = "newest";
     });
