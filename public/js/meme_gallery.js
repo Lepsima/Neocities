@@ -1,4 +1,9 @@
 ImportMemes();
+
+fetch('https://corsproxy.io/?url=https://neocities.org/api/info?sitename=lepsima')
+    .then((response) => response.json())
+    .then((json) => console.log(json));
+
 let memes = null;
 let currentMeme = 0;
 let timeoutID = null;
