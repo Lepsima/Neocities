@@ -42,7 +42,7 @@ path {
   transform: translateX(var(--move));
 
   width: 200px;
-  background: #414141;
+  background: #f3430a;
   color:white;
 }
 

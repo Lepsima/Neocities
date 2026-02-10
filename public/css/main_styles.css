@@ -1,6 +1,6 @@
 html {
-    background: #0a2b5c;
-    box-shadow: 0 0 250px inset #749cd8aa;
+    background: hsl(0, 0%, 15%);
+    box-shadow: 0 0 250px inset hsl(0, 0%, 20%);
     height: 100%;
     overflow: hidden;
 }

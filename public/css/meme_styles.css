@@ -4,7 +4,7 @@
     --img_size: 500px;
     width: var(--img_size);
     
-    transform: translateX(var(--img_size));
+    transform: translateX(calc(var(--img_size) * 1.5));
     transition: transform 1s ease-in-out;
 }
 
