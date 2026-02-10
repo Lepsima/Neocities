@@ -6,18 +6,15 @@
     <meta http-equiv="Content-Security-Policy"
         content="connect-src 'self' https://weirdscifi.ratiosemper.com/neocities.php?sitename=lepsima data: blob:;">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <title id="randomTitle">Homepage</title>
     <link rel="stylesheet" href="css/main_styles.css">
     <link rel="stylesheet" href="css/meme_styles.css">
     <link rel="stylesheet" href="css/panel_styles.css">
 </head>
 
 <body>
-    <h1>Helo</h1>
-    <p>
-
-    </p>
-
+    <br>
+    <br>
     <div class="ac-panel-holder">
         <svg id="lines">
             <defs>
@@ -118,7 +115,8 @@
             <div id="ac-1-1-2" class="ac-sub-panel" action="meme-newest">
                 <div class="ac-sub-panel-content">
                     <h2 class="ac_panel_header">Newest</h2>
-                    <p>Shows memes in alphabetical order</p>
+                    <p>Shows the newest memes added</p>
+                    <p>I have to manually rename everything, so it might take a couple days before it properly works</p>
                 </div>
                 <button ac_goto="back">Back</button>
             </div>
@@ -200,9 +198,23 @@
             <div id="ac-1-4-4" class="ac-sub-panel">
                 <div class="ac-sub-panel-content">
                     <h2 class="ac_panel_header">Friend pages</h2>
-                    <a href="https://jehad-does-stuff.neocities.org/">Jehad does stuff</a>
-                    <a href="https://epiccooldog.neocities.org/">Epic cool dog</a>
-                    <a href="https://lampoli-lair.neocities.org/">Lampoli</a>
+                    <br>
+                    <a href="https://jehad-does-stuff.neocities.org/">
+                        <img src="88s/jehad_88.gif">
+                    </a>
+                    <a href="https://epiccooldog.neocities.org/">
+                        <img src="88s/epic_88.gif">
+                    </a>
+                    <a href="https://lampoli-lair.neocities.org/">
+                        <img src="88s/lamp_88.gif">
+                    </a>
+                    <a href="https://makrelen4ever.neocities.org/">
+                        <img src="88s/mak_88.png">
+                    </a>
+                    <a href="https://teog.neocities.org/">
+                        <img src="88s/teog_88.gif">
+                    </a>
+                    <br>
                 </div>
                 <button ac_goto="back">Back</button>
             </div>
@@ -216,6 +228,7 @@
         </div>
     </div>
 
+    <script src="js/title_randomizer.js"></script>
     <script type="module" src="js/meme_importer.js"></script>
     <script src="js/meme_gallery.js"></script>
     <script src="js/ac_panel_script.js"></script>
