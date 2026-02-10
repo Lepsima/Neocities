@@ -156,6 +156,8 @@ function SwitchPanel(newPanel) {
     let inactive = document.querySelector('.ac-sub-active');
     let active = document.getElementById(newPanel);
 
+    location.href = '#' + newPanel;
+
     ClearAnimations();
     SetPanelActive(inactive, false);
     SetPanelActive(active, true);

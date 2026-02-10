@@ -48,7 +48,6 @@ function LoadNextMeme(dir) {
     } else if (mode == "random") {
         LoadMeme(GetRandomMeme());
     }
-
 }
 
 function GetNextMeme(dir) {

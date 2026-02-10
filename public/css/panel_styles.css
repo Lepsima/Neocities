@@ -30,19 +30,9 @@ path {
   stroke-width: 4;
 }
 
+/*#region Panels*/
 .ac-panel-holder {
   padding-left: 25px;
-}
-
-.ac_panel_header {
-  background: hsl(15, 92%, 50%);
-  color: white;
-
-  width: 100%;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  padding-top: 15px;
-  padding-bottom: 15px;
 }
 
 .ac-sub-panel {
@@ -64,13 +54,12 @@ path {
   width: 200px;
   color:white;
   
-  max-height: 80%; 
+  max-height: 100%; 
   overflow-y: auto;
 
   overscroll-behavior: contain;
   scrollbar-width: none;
 }
-
 
 .ac-panel::-webkit-scrollbar {
   display: none;
@@ -80,24 +69,18 @@ path {
   padding-top: 0.01px;
   text-align: center;
 }
+/*#endregion*/
 
-.text-link {
-  display: block;
+/*#region Panel elements*/
+.ac_panel_header {
+  background: hsl(15, 92%, 50%);
+  color: white;
 
-  border: 5px;
-  font-size: 18px;
-  border-style: outset;
-
-  color: black;
-  background: hsl(0, 0%, 90%);
-  border-color: hsl(0, 0%, 100%);
-  
-  border-radius: 5px;
-  transition: transform 0.25s ease;
-}
-
-.text-link:hover {
-  transform: scale(1.075);
+  width: 100%;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 .ac-sub-panel > button {
@@ -122,13 +105,11 @@ path {
 
   transform: scale(1.15);
 }
+/*#endregion*/
 
+/*#region Panel states*/
 .ac-anim-trigger {
-  transition: filter 0.5s ease, opacity 0.5s ease, --move 0.5s ease;
-}
-
-.ac-sub-active {
-  pointer-events: auto;
+    transition: filter 0.5s ease, opacity 0.5s ease, --move 0.5s ease;
 }
 
 .ac-active .ac-sub-inactive {
@@ -146,6 +127,10 @@ path {
   pointer-events: auto;
 }
 
+.ac-sub-active {
+  pointer-events: auto;
+}
+
 .ac-active {
   --move: 0px;
   opacity: 1;
@@ -155,7 +140,9 @@ path {
   pointer-events: none;
   opacity: 1;
 }
+/*#endregion*/
 
+/*#region Panel positions */
 .ac-move-left {
   --move: -500px;
   flex-direction: row;
@@ -180,7 +167,9 @@ path {
   --move: 600px;
   opacity: 0;
 }
+/*#endregion*/
 
+/*#region Lines */
 .ac-line-dep-0 {
   stroke: url(#gradient_0);
 }
@@ -192,3 +181,7 @@ path {
 .ac-line-dep-2 {
   stroke: url(#gradient_2);
 }
+/*#endregion*/
+
+/*#region test */
+/*#endregion*/
