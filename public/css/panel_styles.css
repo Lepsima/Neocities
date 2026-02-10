@@ -42,17 +42,18 @@ path {
   transform: translateX(var(--move));
 
   width: 200px;
-  background: #f3430a;
   color:white;
 }
 
 .ac-sub-panel {
   color:white;
+  background: hsl(15, 92%, 50%);
 }
 
 .ac-sub-panel-content {
   margin-right: 30px;
   margin-left: 30px;
+  padding-top: 0.01px;
 }
 
 .ac-sub-panel > button {
@@ -126,6 +127,10 @@ path {
 .ac-move-very-far-right {
   --move: 600px;
   opacity: 0;
+}
+
+.ac-sub-panel.ac-sub-inactive {
+  background: hsl(15, 92%, 20%);
 }
 
 .ac-line-dep-0 {
