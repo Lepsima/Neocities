@@ -1,4 +1,4 @@
-fetch('https://lepsima.github.io/Neocities-Media/memes.json')
+fetch('https://memes.colon3.me/memes.json')
     .then(response => {
         if (!response.ok) {
             throw new Error(`HTTP error! Status: ${response.status}`);
