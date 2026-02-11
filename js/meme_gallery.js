@@ -32,6 +32,7 @@ function LoadMemeGallery() {
 
         SwitchPanel("ac-1-1");
         SwitchPanel(mode == "newest" ? "ac-1-1-2" : "ac-1-1-1");
+        SetTitle("Here for the memes?");
     }
 }
 
@@ -177,11 +178,4 @@ function RemoveMedia() {
 
 function PasteToClipboard(text) {
     navigator.clipboard.writeText(text);
-    let tooltip = document.getElementById("copyTooltip");
-    tooltip.innerHTML = "Copied!";
-}
-
-function PasteOut() {
-    let tooltip = document.getElementById("copyTooltip");
-    tooltip.innerHTML = "Copy to clipboard";
 }

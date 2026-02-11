@@ -13,6 +13,10 @@ let titles = [
     ":3"
 ];
 
-const titleelement = document.getElementById("randomTitle");
 const randomTitle = Math.floor(Math.random() * titles.length);
-titleelement.innerHTML = titles[randomTitle];
+SetTitle(titles[randomTitle]);
+
+function SetTitle(title) {
+    const titleelement = document.getElementById("randomTitle");
+    titleelement.innerHTML = title;
+}
