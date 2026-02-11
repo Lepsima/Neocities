@@ -1,4 +1,19 @@
-ImportMemes();
+fetch('https://lepsima.github.io/Neocities-Media/memes.json')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+
+        return response.json();
+    })
+    .then(data => {
+        memes = data.files;
+        InitializeMemes();
+    })
+    .catch(error => {
+        console.error('Error fetching JSON:', error);
+    });
+
 
 let memes = null;
 let currentMeme = 0;
@@ -8,10 +23,7 @@ let mode = null;
 let mediaClass = 'meme-media';
 let panelClass = 'meme-panel';
 
-async function ImportMemes() {
-    const memeImporter = await import("./meme_importer.js");
-    memes = memeImporter.GetMemeData().files;
-
+function InitializeMemes() {
     let images = 0;
     let videos = 0;
 
@@ -88,7 +100,7 @@ function GetCurrentMeme() {
 }
 
 function GetSource(url) {
-    return 'https://lepsima.github.io/Neocities/assets/' + url;
+    return 'https://lepsima.github.io/Neocities-Media/memes/' + url;
 }
 
 document.addEventListener("meme-random", () => {
