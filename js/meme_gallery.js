@@ -100,7 +100,7 @@ function GetCurrentMeme() {
 }
 
 function GetSource(url) {
-    return 'https://lepsima.github.io/Neocities-Media/memes/' + url;
+    return 'https://memes.colon3.me/' + url;
 }
 
 document.addEventListener("meme-random", () => {
