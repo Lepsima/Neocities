@@ -1,3 +1,11 @@
+let memes = null;
+let currentMeme = 0;
+let timeoutID = null;
+let mode = null;
+
+let mediaClass = 'meme-media';
+let panelClass = 'meme-panel';
+
 fetch('https://memes.colon3.me/memes.json')
     .then(response => {
         if (!response.ok) {
@@ -9,19 +17,23 @@ fetch('https://memes.colon3.me/memes.json')
     .then(data => {
         memes = data.files;
         InitializeMemes();
+        LoadMemeGallery();
     })
     .catch(error => {
         console.error('Error fetching JSON:', error);
     });
 
 
-let memes = null;
-let currentMeme = 0;
-let timeoutID = null;
-let mode = null;
 
-let mediaClass = 'meme-media';
-let panelClass = 'meme-panel';
+function LoadMemeGallery() {
+    let params = new URL(document.location.toString()).searchParams;
+    if (params.has("memes")) {
+        let mode = params.get("memes");
+
+        SwitchPanel("ac-1-1");
+        SwitchPanel(mode == "newest" ? "ac-1-1-2" : "ac-1-1-1");
+    }
+}
 
 function InitializeMemes() {
     let images = 0;
