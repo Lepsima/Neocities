@@ -150,7 +150,7 @@ function LoadMeme(url) {
     if (url.match(/\.(jpg|jpeg|png|gif|webp)$/)) {
         panel.innerHTML += `<img id="${mediaClass}" src="${url}">`;
     }
-    else if (url.match(/\.(mp4|qt|webm|ogg|mov|MP4)$/)) {
+    else if (url.match(/\.(mp4|qt|webm|ogg|mov|MP4|mpg4)$/)) {
         panel.innerHTML += `<video id="${mediaClass}" src="${url}" autoplay loop></video>`;
     }
     else {
