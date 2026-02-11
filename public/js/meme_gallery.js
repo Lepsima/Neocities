@@ -1,9 +1,5 @@
 ImportMemes();
 
-fetch("https://weirdscifi.ratiosemper.com/neocities.php?sitename=lepsima")
-    .then((response) => response.json())
-    .then((json) => console.log(json));
-
 let memes = null;
 let currentMeme = 0;
 let timeoutID = null;
@@ -34,6 +30,31 @@ Serving <i>${memes.length}</i> memes
 <i>${videos}</i> Videos / Gifs
 <i>${images}</i> Images
         `;
+
+    updateSessionData();
+}
+
+function updateSessionData() {
+    let name = 'meme_session_data';
+    let data = localStorage.getItem(name);
+    let json = data ? JSON.parse(data) : null;
+
+    let prevMemes = json == null ? 0 : json.memeCount;
+    let newMemes = memes.length - prevMemes;
+
+    if (json == null) {
+        json = {
+            memeCount: 0
+        }
+    }
+
+    if (newMemes > 0) {
+        let button = document.querySelector('#ac-1 > button:nth-child(2)');
+        button.innerHTML = `Memes (+${newMemes})`;
+    }
+
+    json.memeCount = memes.length;
+    localStorage.setItem(name, JSON.stringify(json));
 }
 
 function GetRandomMeme() {
@@ -70,30 +91,26 @@ function GetSource(url) {
     return 'https://lepsima.github.io/Neocities/assets/' + url;
 }
 
-document.addEventListener("meme-random",
-    function () {
-        LoadMeme(GetRandomMeme());
-        mode = "random";
-    });
+document.addEventListener("meme-random", () => {
+    LoadMeme(GetRandomMeme());
+    mode = "random";
+});
 
-document.addEventListener("meme-newest",
-    function () {
-        currentMeme = memes.length - 1;
-        LoadMeme(GetCurrentMeme());
-        mode = "newest";
-    });
+document.addEventListener("meme-newest", () => {
+    currentMeme = memes.length - 1;
+    LoadMeme(GetCurrentMeme());
+    mode = "newest";
+});
 
-document.addEventListener("meme-favs",
-    function () {
-        console.debug("Favs");
-        mode = null;
-    });
+document.addEventListener("meme-favs", () => {
+    console.debug("Favs");
+    mode = null;
+});
 
-document.addEventListener("empty-panel",
-    function () {
-        Unload();
-        mode = null;
-    });
+document.addEventListener("empty-panel", () => {
+    Unload();
+    mode = null;
+});
 
 function LoadMeme(url) {
     const panel = document.getElementById(panelClass);
