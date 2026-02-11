@@ -130,6 +130,10 @@ function LoadMeme(url) {
 
     RemoveMedia();
 
+    let discordURL = `[⠀](${url})`;
+    let discordButton = document.getElementById("discord-meme-button");
+    discordButton.setAttribute('onclick', `PasteToClipboard('${discordURL}')`);
+
     if (url.match(/\.(jpg|jpeg|png|gif|webp)$/)) {
         panel.innerHTML += `<img id="${mediaClass}" src="${url}">`;
     }
@@ -159,3 +163,13 @@ function RemoveMedia() {
     mediaElement?.remove();
 }
 
+function PasteToClipboard(text) {
+    navigator.clipboard.writeText(text);
+    let tooltip = document.getElementById("copyTooltip");
+    tooltip.innerHTML = "Copied!";
+}
+
+function PasteOut() {
+    let tooltip = document.getElementById("copyTooltip");
+    tooltip.innerHTML = "Copy to clipboard";
+}

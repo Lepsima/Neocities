@@ -102,7 +102,7 @@ path {
   transform: scale(1.075);
 }
 
-.ac-sub-panel > button {
+button {
   display: block;
   height: 40px;
   width: 100%;
@@ -117,11 +117,10 @@ path {
   border-color: hsl(0, 0%, 50%);
 }
 
-.ac-sub-panel > button:hover {
+button:hover {
   color: black;
   background: hsl(0, 0%, 90%);
   border-color: hsl(0, 0%, 100%);
-
   transform: scale(1.15);
 }
 /*#endregion*/

@@ -10,18 +10,15 @@
 
 #meme-navigation {
     display: flex;
-    height: 50px;
-    margin-bottom: 5px;
+    margin-bottom: 20px;
 }
 
 #meme-navigation > button {
-  flex: 1;
-  background: #a3b1d1;
-  transition: transform 0.25s ease;
+    flex: 1;
+    height: 50px;
 }
 
 #meme-navigation > button:hover {
-  background: rgb(255, 255, 255);
   transform: scale(1.15);
 }
 
@@ -40,4 +37,49 @@
 
 #meme-panel.active {
     transform: translateX(0px);
+}
+
+#discord-meme-button {
+    width: 50%;
+    font-size: 15px;
+    margin: auto;
+    margin-top: 20px;
+}
+
+.copytooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.copytooltip .copytooltiptext {
+  visibility: hidden;
+  width: 140px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -75px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.copytooltip .copytooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.copytooltip:hover .copytooltiptext {
+  visibility: visible;
+  opacity: 1;
 }
