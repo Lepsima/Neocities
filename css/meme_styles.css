@@ -8,21 +8,21 @@
     transition: transform 1s ease-in-out;
 }
 
-#meme-navigation {
+.meme-navigation {
     display: flex;
-    margin-bottom: 20px;
 }
 
-#meme-navigation > button {
+.meme-navigation > button {
     flex: 1;
     height: 50px;
 }
 
-#meme-navigation > button:hover {
+.meme-navigation > button:hover {
   transform: scale(1.15);
 }
 
 #meme-media {
+    margin-top: 20px;
     display: block;
     width: 100%;
     height: auto;
@@ -39,8 +39,8 @@
     transform: translateX(0px);
 }
 
-#discord-meme-button {
-    width: 50%;
+#discord-meme-button, #favorite-meme-button {
+    width: 10%;
     font-size: 15px;
     margin: auto;
     margin-top: 20px;

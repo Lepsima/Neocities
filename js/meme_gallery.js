@@ -1,4 +1,5 @@
 let memes = null;
+let favorites = null;
 let currentMeme = 0;
 let timeoutID = null;
 let mode = null;
@@ -36,6 +37,54 @@ function LoadMemeGallery() {
     }
 }
 
+function SetFavorite() {
+    let meme = GetCurrentMeme();
+    console.debug(favorites);
+
+    if (favorites != null && favorites.includes(meme)) {
+        favorites = removeItem(favorites, meme);
+
+        if (mode == 'favorites' && !IsFavorite()) {
+            SwitchPanel("ac-1-1");
+            alert("The last favorite was removed!");
+        }
+        LoadMeme(GetRandomMeme());
+
+    } else if (favorites == null) {
+        favorites = [meme];
+    } else {
+        favorites.push(meme);
+    }
+
+    let json = {
+        memes: favorites
+    }
+
+    localStorage.setItem('meme-favorites', JSON.stringify(json));
+    UpdateFavoriteButton();
+}
+
+function removeItem(array, itemToRemove) {
+    const index = array.indexOf(itemToRemove);
+
+    if (index !== -1) {
+        array.splice(index, 1);
+    }
+
+    return array;
+}
+
+function UpdateFavoriteButton() {
+    let fav_button = document.getElementById('favorite-meme-button');
+
+    let meme = GetCurrentMeme();
+    if (favorites != null && favorites.includes(meme)) {
+        fav_button.innerHTML = "Remove Favorite";
+    } else {
+        fav_button.innerHTML = "Add Favorite";
+    }
+}
+
 function InitializeMemes() {
     let images = 0;
     let videos = 0;
@@ -60,6 +109,10 @@ Serving <i>${memes.length}</i> memes
 }
 
 function updateSessionData() {
+    let fav_data = localStorage.getItem('meme-favorites');
+    let fav_json = fav_data ? JSON.parse(fav_data) : null;
+    favorites = fav_json?.memes;
+
     let name = 'meme_session_data';
     let data = localStorage.getItem(name);
     let json = data ? JSON.parse(data) : null;
@@ -85,14 +138,20 @@ function updateSessionData() {
 function GetRandomMeme() {
     const random = Math.floor(Math.random() * memes.length);
     currentMeme = random;
-    return GetCurrentMeme();
+    return GetCurrentMemeURL();
 }
 
 function LoadNextMeme(dir) {
-    if (mode == null || mode == "newest") {
-        LoadMeme(GetNextMeme(dir));
-    } else if (mode == "random") {
+    if (mode == "favorites" && !IsFavorite()) {
+        SwitchPanel("ac-1-1");
+        alert("All favorites removed!");
+        return;
+    }
+
+    if (mode == "random") {
         LoadMeme(GetRandomMeme());
+    } else {
+        LoadMeme(GetNextMeme(dir));
     }
 }
 
@@ -102,14 +161,26 @@ function GetNextMeme(dir) {
     else
         currentMeme--;
 
-    if (currentMeme < 0) currentMeme = memes.length - 1;
-    if (currentMeme >= memes.length) currentMeme = 0;
+    return GetCurrentMemeURL();
+}
 
-    return GetCurrentMeme();
+function ClampIndex() {
+    let length = IsFavorite() ? favorites.length : memes.length;
+    if (currentMeme < 0) currentMeme = length - 1;
+    if (currentMeme >= length) currentMeme = 0;
 }
 
 function GetCurrentMeme() {
-    return GetSource(memes[currentMeme]);
+    ClampIndex();
+    return IsFavorite() ? favorites[currentMeme] : memes[currentMeme];
+}
+
+function GetCurrentMemeURL() {
+    return GetSource(GetCurrentMeme());
+}
+
+function IsFavorite() {
+    return mode == 'favorites' && favorites != null && favorites.length > 0;
 }
 
 function GetSource(url) {
@@ -117,19 +188,26 @@ function GetSource(url) {
 }
 
 document.addEventListener("meme-random", () => {
-    LoadMeme(GetRandomMeme());
     mode = "random";
+    LoadMeme(GetRandomMeme());
 });
 
 document.addEventListener("meme-newest", () => {
     currentMeme = memes.length - 1;
-    LoadMeme(GetCurrentMeme());
     mode = "newest";
+    LoadMeme(GetCurrentMemeURL());
 });
 
 document.addEventListener("meme-favs", () => {
-    console.debug("Favs");
-    mode = null;
+    currentMeme = 0;
+    mode = "favorites";
+
+    if (!IsFavorite()) {
+        SwitchPanel("ac-1-1");
+        alert("No favorites found!");
+    } else {
+        LoadMeme(GetCurrentMemeURL());
+    }
 });
 
 document.addEventListener("empty-panel", () => {
@@ -146,6 +224,8 @@ function LoadMeme(url) {
     let discordURL = `[⠀](${url})`;
     let discordButton = document.getElementById("discord-meme-button");
     discordButton.setAttribute('onclick', `PasteToClipboard('${discordURL}')`);
+
+    UpdateFavoriteButton();
 
     if (url.match(/\.(jpg|jpeg|png|gif|webp)$/)) {
         panel.innerHTML += `<img id="${mediaClass}" src="${url}">`;

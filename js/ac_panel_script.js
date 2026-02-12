@@ -39,14 +39,6 @@ function InitPanels() {
 function SetPanelActive(subpanel, active) {
     let panel = subpanel.parentElement;
 
-    if (active) {
-        let action = subpanel.getAttribute('action');
-        if (action == null) action = "empty-panel";
-
-        let event = new Event(action);
-        document.dispatchEvent(event);
-    }
-
     document
     if (active) {
         // remove anims
@@ -167,6 +159,12 @@ function SwitchPanel(newPanel) {
 
     PlayAnimations();
     CreateLinesFor(active);
+
+    let action = active.getAttribute('action');
+    if (action == null) action = "empty-panel";
+
+    let event = new Event(action);
+    document.dispatchEvent(event);
 }
 
 function ClearAnimations() {

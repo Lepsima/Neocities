@@ -115,7 +115,6 @@
                 <div class="ac-sub-panel-content">
                     <h2 class="ac_panel_header">Newest</h2>
                     <p>Shows the newest memes added</p>
-                    <p>I have to manually rename everything, so it might take a couple days before it properly works</p>
                 </div>
                 <button ac_goto="back">Back</button>
             </div>
@@ -123,7 +122,7 @@
             <div id="ac-1-1-3" class="ac-sub-panel" action="meme-favs">
                 <div class="ac-sub-panel-content">
                     <h2 class="ac_panel_header">Favorites</h2>
-                    <p>WIP</p>
+                    <p>A customizable gallery for your favorite picks</p>
                 </div>
                 <button ac_goto="back">Back</button>
             </div>
@@ -258,8 +257,11 @@
     </div>
 
     <div id="meme-panel">
-        <button id="discord-meme-button">Copy Discord Embed Link</button>
-        <div id="meme-navigation">
+        <div class="meme-navigation">
+            <button id="discord-meme-button">Copy Discord Embed Link</button>
+            <button id="favorite-meme-button" onclick="SetFavorite()"></button>
+        </div>
+        <div class="meme-navigation">
             <button onclick="LoadNextMeme('1')">Left</button>
             <button onclick="LoadNextMeme('2')">Right</button>
         </div>
