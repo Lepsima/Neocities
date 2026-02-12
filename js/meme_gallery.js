@@ -39,14 +39,13 @@ function LoadMemeGallery() {
 
 function SetFavorite() {
     let meme = GetCurrentMeme();
-    console.debug(favorites);
 
     if (favorites != null && favorites.includes(meme)) {
         favorites = removeItem(favorites, meme);
 
         if (mode == 'favorites' && !IsFavorite()) {
-            SwitchPanel("ac-1-1");
             alert("The last favorite was removed!");
+            SwitchPanel("ac-1-1");
         } else {
             LoadMeme(GetNextMeme());
         }
