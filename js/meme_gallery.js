@@ -47,9 +47,9 @@ function SetFavorite() {
         if (mode == 'favorites' && !IsFavorite()) {
             SwitchPanel("ac-1-1");
             alert("The last favorite was removed!");
+        } else {
+            LoadMeme(GetNextMeme());
         }
-        LoadMeme(GetRandomMeme());
-
     } else if (favorites == null) {
         favorites = [meme];
     } else {
