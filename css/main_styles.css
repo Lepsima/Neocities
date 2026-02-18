@@ -8,3 +8,7 @@ html {
 html, body {
     margin:0px;
 }
+
+#contact {
+    display: none;
+}
